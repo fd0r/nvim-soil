@@ -95,7 +95,9 @@ function M.run()
     if settings.actions.redraw then
       redraw()
     end
-    execute_command(open_image_command(absolute_out_file))
+    if settings.actions.reopen then
+      execute_command(open_image_command(absolute_out_file))
+    end
   else
     Logger:warn "Install plantuml or download it from the official page and set it up with 'puml_jar' option."
   end

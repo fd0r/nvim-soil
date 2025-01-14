@@ -39,6 +39,7 @@ end
 M.DEFAULTS = {
   actions = {
     redraw = false,
+    reopen = false,
   },
 
   image = {
@@ -67,6 +68,9 @@ function M.setup(opts)
     local actions = opts.actions
     if actions.redraw ~= nil and type(actions.redraw) == 'boolean' and actions.redraw then
       M.DEFAULTS.actions.redraw = true
+    end
+    if actions.reopen ~= nil and type(actions.reopen) == 'boolean' and actions.reopen then
+      M.DEFAULTS.actions.reopen = true
     end
   end
   if opts.image then
