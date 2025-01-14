@@ -104,8 +104,13 @@ function M.run()
 end
 
 function M.open_image()
-  local file = vim.fn.expand '%:p:r'
-  execute_command(open_image_command(file), 'Image not found. Run :Soil command to generate it.')
+  -- Path settings
+  local source_file_relative = vim.fn.expand '%:p:.:r'
+  local source_file_absolute = vim.fn.expand '%:p:r'
+  -- Open file in append mode ('a')
+
+  local absolute_out_folder, absolute_out_file = settings.image.source_file_to_absolute_output(source_file_relative, source_file_absolute, settings)
+  execute_command(open_image_command(absolute_out_file), 'Image not found. Run :Soil command to generate it.')
 end
 
 return M
