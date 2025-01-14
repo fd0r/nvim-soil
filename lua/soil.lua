@@ -31,6 +31,10 @@ local function titleCase(str)
     return first:upper() .. rest:lower()
   end)
 end
+local function split_path(path)
+  local directory, filename = path:match '(.-)([^/\\]*)$'
+  return directory, filename
+end
 
 M.DEFAULTS = {
   actions = {
@@ -47,7 +51,8 @@ M.DEFAULTS = {
     source_file_to_absolute_output = function(relative_file, absolute_file, settings)
       local cwd = vim.fn.getcwd()
       local file_name_no_ext = get_file_name_without_ext(relative_file)
-      local absolute_out_folder = cwd .. '/out/' .. format_file_name(file_name_no_ext)
+      local relative_file_folder = split_path(relative_file)
+      local absolute_out_folder = cwd .. '/out/' .. relative_file_folder .. '/' .. format_file_name(file_name_no_ext)
       local absolute_out_file = absolute_out_folder .. '/' .. titleCase(file_name_no_ext) .. '.' .. settings.image.format
       return absolute_out_folder, absolute_out_file
     end,
