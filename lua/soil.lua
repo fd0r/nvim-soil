@@ -53,7 +53,7 @@ M.DEFAULTS = {
       local cwd = vim.fn.getcwd()
       local file_name_no_ext = get_file_name_without_ext(relative_file)
       local relative_file_folder = split_path(relative_file)
-      local absolute_out_folder = cwd .. '/out/' .. relative_file_folder .. '/' .. format_file_name(file_name_no_ext)
+      local absolute_out_folder = cwd .. '/out/' .. relative_file_folder .. format_file_name(file_name_no_ext)
       local absolute_out_file = absolute_out_folder .. '/' .. titleCase(file_name_no_ext) .. '.' .. settings.image.format
       return absolute_out_folder, absolute_out_file
     end,
