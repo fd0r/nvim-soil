@@ -44,7 +44,7 @@ M.DEFAULTS = {
 
   image = {
     darkmode = false,
-    format = 'png',
+    format = 'svg',
     execute_to_open = function(img)
       return 'open ' .. img
     end,
